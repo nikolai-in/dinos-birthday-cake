@@ -11,6 +11,11 @@ config_version=4
 [application]
 
 config/name="Dino's birthday cake"
+config/description="Cake is a lie! 
+Happy birthday!"
+config/icon="res://icon.png"
+config/macos_native_icon="res://dinos-birthday-cake.icns"
+config/windows_native_icon="res://icon.ico"
 
 [gui]
 
