@@ -11,7 +11,7 @@ region = Rect2( 48, 80, 16, 16 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 36, 43 )
 
-[node name="Fruit" type="RigidBody2D"]
+[node name="Fruit" type="RigidBody2D" groups=["fruits"]]
 collision_layer = 4
 collision_mask = 7
 gravity_scale = 9.0

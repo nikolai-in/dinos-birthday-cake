@@ -13,19 +13,28 @@ var max_speed: = max_speed_default
 var velocity: = Vector2.ZERO
 
 
-func unhandled_input(event: InputEvent) -> void:
-	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
-	if get_move_direction()[0] == -1:
+func flip_sprite(move_direction: Vector2) -> void:
+	if move_direction.x < 0:
 		$"%AnimatedSprite".flip_h = true
-	elif get_move_direction()[0] == 1:
+	else: 
 		$"%AnimatedSprite".flip_h = false
 
+
+func unhandled_input(event: InputEvent) -> void:
+	if owner.is_on_floor() and (event.is_action_pressed("jump") or event.device == -1):
+		_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
 
 func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(velocity, max_speed, acceleration, delta, get_move_direction())
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 	Events.emit_signal("player_moved", owner)
+	flip_sprite(get_move_direction())
+	
+	if Input.get_accelerometer().y < 0:
+		get_tree().call_group("fruits", "set_gravity", -20)
+	elif Input.get_accelerometer().y > 0:
+		get_tree().call_group("fruits", "set_gravity", 9)
+		
 
 
 static func calculate_velocity(
@@ -46,7 +55,10 @@ static func calculate_velocity(
 
 
 static func get_move_direction() -> Vector2:
-	return Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		1.0
-	)
+	if Input.get_accelerometer() == Vector3.ZERO:
+		return Vector2(
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+			1.0
+		)
+	else:
+		return Vector2(-Input.get_accelerometer().x, 1.0)
