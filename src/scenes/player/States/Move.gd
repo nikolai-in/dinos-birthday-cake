@@ -16,6 +16,10 @@ var velocity: = Vector2.ZERO
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
 		_state_machine.transition_to("Move/Air", { impulse = jump_impulse })
+	if get_move_direction()[0] == -1:
+		$"%AnimatedSprite".flip_h = true
+	elif get_move_direction()[0] == 1:
+		$"%AnimatedSprite".flip_h = false
 
 
 func physics_process(delta: float) -> void:
@@ -36,7 +40,8 @@ static func calculate_velocity(
 	new_velocity += move_direction * acceleration * delta
 	new_velocity.x = clamp(new_velocity.x, -max_speed.x, max_speed.x)
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed.y)
-
+	
+	
 	return new_velocity
 
 

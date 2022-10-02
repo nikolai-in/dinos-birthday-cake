@@ -90,10 +90,13 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+unique_name_in_owner = true
 position = Vector2( -13.25, 106 )
 scale = Vector2( 13.25, 13.25 )
 frames = SubResource( 14 )
 animation = "IDLE"
+frame = 3
+playing = true
 offset = Vector2( 1, -8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

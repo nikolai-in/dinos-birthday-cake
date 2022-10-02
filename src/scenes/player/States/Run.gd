@@ -23,6 +23,8 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	get_parent().enter(msg)
+	
+	$"%AnimatedSprite".animation = "MOVE"
 
 
 func exit() -> void:

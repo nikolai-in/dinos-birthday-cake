@@ -37,6 +37,8 @@ func enter(msg: Dictionary = {}) -> void:
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg:
 		move.velocity += calculate_jump_velocity(msg.impulse)
+		
+	$"%AnimatedSprite".animation = "MOVE"
 
 
 func exit() -> void:

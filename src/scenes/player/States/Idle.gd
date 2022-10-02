@@ -20,6 +20,8 @@ func enter(msg: Dictionary = {}) -> void:
 	
 	move.max_speed = move.max_speed_default
 	move.velocity = Vector2.ZERO
+	
+	$"%AnimatedSprite".animation = "IDLE"
 
 
 func exit() -> void:
