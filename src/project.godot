@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/player/Player.gd"
+}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scenes/StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Player": "",
 "State": "res://scenes/StateMachine/state.svg",
 "StateMachine": "res://scenes/StateMachine/state_machine.svg"
 }
@@ -34,10 +40,16 @@ config/icon="res://icon.png"
 config/macos_native_icon="res://dinos-birthday-cake.icns"
 config/windows_native_icon="res://icon.ico"
 
+[autoload]
+
+Events="*res://scenes/Autoload/Events.gd"
+
 [display]
 
-window/size/width=256
-window/size/height=144
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=1280
+window/size/test_height=720
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
