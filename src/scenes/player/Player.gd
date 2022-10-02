@@ -16,4 +16,3 @@ func set_is_active(value: bool) -> void:
 		return
 	collider.disabled = not value
 
-

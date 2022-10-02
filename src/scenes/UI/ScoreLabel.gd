@@ -11,4 +11,4 @@ func _ready() -> void:
 func on_score_change(fruit: RigidBody2D) -> void:
 	score += 1 * fruit.mass
 	text = str(score)
-	fruit.queue_free()
+	# fruit.queue_free()
