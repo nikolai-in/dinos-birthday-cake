@@ -4,6 +4,7 @@ extends RigidBody2D
 func _on_Fruit_body_entered(body: Node) -> void:
 	if body.name == "Player": 
 		Events.emit_signal("food_collected", self)
+		queue_free()
 
 
 func set_gravity(ungravity_scale: float) -> void:

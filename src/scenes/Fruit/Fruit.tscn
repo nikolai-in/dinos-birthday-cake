@@ -13,7 +13,7 @@ extents = Vector2( 36, 43 )
 
 [node name="Fruit" type="RigidBody2D" groups=["fruits"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 gravity_scale = 9.0
 contacts_reported = 1
 contact_monitor = true
