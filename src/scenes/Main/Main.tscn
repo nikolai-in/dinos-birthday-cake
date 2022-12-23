@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/Main/jungle tileset.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/Main/parallax background/plx-5.png" type="Texture" id=14]
 [ext_resource path="res://scenes/player/shadow_2.png" type="Texture" id=15]
 [ext_resource path="res://scenes/Main/Shadow.gd" type="Script" id=16]
+[ext_resource path="res://scenes/Main/Snow.gd" type="Script" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 8, 16, 8 )
@@ -393,5 +394,12 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -20.0
+
+[node name="Snow" type="Node2D" parent="."]
+scale = Vector2( 4, 4 )
+script = ExtResource( 17 )
+emitting = true
+visibility_rect = Rect2( 0, -100, 500, 300 )
+colors = [ Color( 1, 1, 1, 1 ) ]
 
 [connection signal="timeout" from="FruitTimer" to="." method="_on_FruitTimer_timeout"]
